@@ -1,2 +1,3 @@
 # LearningAlgorithms
-Just learning basic algorithms
+Целью проекта является проверка различных алгоритмов на сложность/скорость выполнения.
+
