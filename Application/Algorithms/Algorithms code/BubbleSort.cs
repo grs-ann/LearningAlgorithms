@@ -16,7 +16,7 @@ namespace Algorithms.Algorithms_code
         {
             Name = n;
         }
-        public int[] InitializeBubbleSort(int[] array)
+        public int[] InitializeSort(int[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {

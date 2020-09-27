@@ -4,8 +4,14 @@ using System.Text;
 
 namespace Algorithms
 {
-    interface IAlgorithm
+    public interface IAlgorithm
     {
         string Name { get; }
+        public int[] InitializeSort(int[] array)
+        {
+            return array;
+        }
+
     }
+    
 }
