@@ -15,12 +15,15 @@ namespace Algorithms.Algorithms_code
         }
         public int[] InitializeSort(int[] array, int minIndex, int maxIndex)
         {
+            // Finish
             if (minIndex >= maxIndex)
             {
                 return array;
             }
             var pivotIndex = Partition(array, minIndex, maxIndex);
+            // Left.
             InitializeSort(array, minIndex, pivotIndex - 1);
+            // Right.
             InitializeSort(array, pivotIndex + 1, maxIndex);
             return array;
         }
