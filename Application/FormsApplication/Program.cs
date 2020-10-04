@@ -27,6 +27,10 @@ namespace FormsApplication
             IAlgorithm bubbleSort = new BubbleSort("Bubble sort");
             string bubbleSortName = bubbleSort.Name;
             algorithmsStash.Add(bubbleSortName, bubbleSort);
+            // Quick sort.
+            IAlgorithm quickSort = new QuickSort("Quick sort");
+            string quickSortName = quickSort.Name;
+            algorithmsStash.Add(quickSortName, quickSort);
             
 
             Form1 form = new Form1(algorithmsStash);

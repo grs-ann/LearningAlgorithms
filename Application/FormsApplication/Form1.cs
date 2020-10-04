@@ -58,9 +58,11 @@ namespace FormsApplication
             ArrayLength = Convert.ToInt32(textBox1.Text);
             ArrayRange = Convert.ToInt32(textBox2.Text);
             // Creating array with length and range from user input.
-            int[] array = ac.GetRandomArray(ArrayLength, ArrayRange);
-            TimeSpan time = tc.GetExecutionTime(algorithmsStash[Key], array);
-            Form2 form2 = new Form2(Key, time);
+            //Stopwatch sw = new Stopwatch();
+            tc.GetGeneratingTime(ArrayLength, ArrayRange, out int[] array, out TimeSpan genTime);
+            //int[] array = ac.GetRandomArray(ArrayLength, ArrayRange);
+            TimeSpan sortTime = tc.GetExecutionTime(algorithmsStash[Key], array);
+            Form2 form2 = new Form2(Key, sortTime, genTime);
             form2.ShowDialog();
         }
     }
@@ -79,16 +81,29 @@ namespace FormsApplication
     }
     class TimeChecker
     {
+        ArrayCreator ac = new ArrayCreator();
         internal TimeSpan GetExecutionTime(IAlgorithm alg, int[] arr)
         {
             // Timer for checking algorithms work time.
             Stopwatch sw = new Stopwatch();
             sw.Start();
+            // !!! Initialize sorting are here.
             alg.InitializeSort(arr);
             sw.Stop();
             // Contains information how long time the algorithm took.
             TimeSpan timeResult = sw.Elapsed;
             return timeResult;
+        }
+        internal void GetGeneratingTime(int ArrayLength, int rangeOfNums, 
+            out int[] array, out TimeSpan genTime)
+        {
+            // Timer for checking array generating work time.
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            array = ac.GetRandomArray(ArrayLength, rangeOfNums);
+            sw.Stop();
+            // Contains information how long time the algorithm took.
+            genTime = sw.Elapsed;
         }
     }
 }
